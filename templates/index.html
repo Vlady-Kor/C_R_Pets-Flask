@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Pets</title>
+</head>
+<body>
+    <div class="container">
+        <div class="table">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                </tr>
+                {% for one_pet in allpets %}
+                <tr>
+                    <td>{{one_pet['pet_id']}}</td>
+                    <td>{{one_pet['name']}}</td>
+                    <td>{{one_pet['type']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <br><br>
+        <div class="line"></div>
+        <br>
+        <h1>Add a Pet!</h1>
+        <div class="add">
+            <form action="/create" method="POST">
+                <p><strong>Name</strong> <input type="text" name="name"></p>
+                <p><strong>Type</strong> <input type="text" name="type"></p>
+                <input type="submit" value="Add Pet" class="button">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
